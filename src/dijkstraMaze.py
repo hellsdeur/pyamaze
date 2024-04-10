@@ -1,4 +1,5 @@
-from pyamaze import maze,agent,COLOR,textLabel
+from src.pyamaze import maze,agent,COLOR,textLabel
+
 def dijkstra(m,*h,start=None):
     if start is None:
         start=(m.rows,m.cols)

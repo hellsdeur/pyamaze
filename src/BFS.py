@@ -1,4 +1,4 @@
-from pyamaze import maze,agent,COLOR,textLabel
+from src.pyamaze import maze,agent,COLOR,textLabel
 def BFS(m):
     start=(m.rows,m.cols)
     frontier=[start]

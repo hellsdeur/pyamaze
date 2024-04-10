@@ -280,10 +280,9 @@ class maze:
     '''
     This is the main class to create maze.
     '''
-    def __init__(self,rows=10,cols=10):
+    def __init__(self, dim=10):
         '''
-        rows--> No. of rows of the maze
-        cols--> No. of columns of the maze
+        dim--> No. of rows and columns of the maze
         Need to pass just the two arguments. The rest will be assigned automatically
         maze_map--> Will be set to a Dicationary. Keys will be cells and
                     values will be another dictionary with keys=['E','W','N','S'] for
@@ -299,8 +298,8 @@ class maze:
                         path trace by the agent.
         _
         '''
-        self.rows=rows
-        self.cols=cols
+        self.rows=dim
+        self.cols=dim
         self.maze_map={}
         self.grid=[]
         self.path={} 
@@ -599,8 +598,8 @@ class maze:
         self._drawMaze(self.theme)
         agent(self,*self._goal,shape='square',filled=True,color=COLOR.green)
         if saveMaze:
-            dt_string = datetime.datetime.now().strftime("%Y-%m-%d--%H-%M-%S")
-            with open(f'maze--{dt_string}.csv','w',newline='') as f:
+            # dt_string = datetime.datetime.now().strftime("%Y-%m-%d--%H-%M-%S")
+            with open(f'data/maze.csv','w',newline='') as f:
                 writer=csv.writer(f)
                 writer.writerow(['  cell  ','E','W','N','S'])
                 for k,v in self.maze_map.items():
@@ -619,7 +618,7 @@ class maze:
         
         self._LabWidth=26 # Space from the top for Labels
         self._win=Tk()
-        self._win.state('zoomed')
+        self._win.state('normal')
         self._win.title('PYTHON MAZE WORLD by Learning Orbis')
         
         scr_width=self._win.winfo_screenwidth()
