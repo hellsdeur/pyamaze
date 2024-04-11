@@ -5,6 +5,34 @@ The main idea of this module, **pyamaze**, is to assist in creating customizable
 
 
 ![pyamaze Logo](https://github.com/MAN1986/pyamaze/blob/main/pyamaze%20Logo.png)
+
+### Prerequisites
+
+- Git
+- Python $\geq$ 3.8
+
+### Installation
+
+1. Create a virtual environment with venv.
+
+```
+python -m venv env
+```
+
+2. Activate the environment.
+
+```
+source ./env/bin/activate
+```
+
+3. Install the dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+At this point the setup is complete and you can proceed to open `notebooks/main.ipynb`.
+
 ### Here is the detail on how to use the module
 
 The detailed video can be watched here:
@@ -32,13 +60,13 @@ The top-left cell is the goal of the maze and there are ways we can change the g
 We can change the size of the maze while creating that. For example, a 5x5 maze can be generated as:
 ```
 from pyamaze import maze
-m=maze(5,5)
+m=maze(5)
 m.CreateMaze()
 m.run()
 ```
 ![5x5 Maze](https://github.com/MAN1986/pyamaze/blob/main/Picture2.png) 
 
-The first argument of the ***CreateMaze*** function is the row number and the second is the column number. To generate a maze of size 15x20, you should use the function as `m.CreateMaze(15,20)`.
+The first argument of the ***CreateMaze*** function is the dimension. To generate a maze of size 15x20, you should use the function as `m.CreateMaze(15,20)`.
 
 It is important to know the maze parameters in order to use those in the program. Firstly the cells of the maze have two indices, one for row and the other for the column. The indices of the 5x5 maze generated previously are shown here:
 
@@ -91,7 +119,7 @@ For that, we have the ***agent*** class in the module **pyamaze**. After importi
 Here is complete code to create an agent on the default sized maze with light theme:
 ```
 from pyamaze import maze,COLOR,agent
-m=maze(10,10)
+m=maze(10)
 m.CreateMaze(theme=COLOR.light)
 a=agent(m)
 m.run()
@@ -113,7 +141,7 @@ The agent object has the two attributes ***x*** and ***y*** that you can access 
 
 ```
 from pyamaze import maze,COLOR,agent
-m=maze(5,5)
+m=maze(5)
 m.CreateMaze()
 a=agent(m,shape='arrow',footprints=True)
 a.position=(5,4)
@@ -151,7 +179,7 @@ Run this code and see the simulation yourself.
 
 ```
 from pyamaze import maze,agent
-m=maze(20,20)
+m=maze(20)
 m.CreateMaze(loopPercent=50)
 a=agent(m,filled=True,footprints=True)
 m.tracePath({a:m.path})
